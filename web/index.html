@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio Khalisha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="profile">
+    <img src="pas photo.jpeg" alt="Foto Profil">
+    <div>
+      <h2>Khalisha</h2>
+      <small>Mahasiswa Sistem Informasi</small>
+    </div>
+  </div>
+  <div class="header-item">📧 khalisha@email.com</div>
+  <div class="header-item">📍 Universitas Internasional Batam</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="active" onclick="showPage('beranda', this)">Beranda</a>
+  <a onclick="showPage('profil', this)">Profil</a>
+  <a onclick="showPage('resume', this)">Resume</a>
+  <a onclick="showPage('portofolio', this)">Portofolio</a>
+  <a onclick="showPage('kontak', this)">Kontak Saya</a>
+</nav>
+
+<div class="container">
+
+<!-- BERANDA -->
+<div id="beranda" class="section active">
+  <div class="card beranda">
+    <img src="foto.jpeg">
+    <div>
+      <h2>Halo 👋</h2>
+      <p>Saya <b>Khalisha</b>, mahasiswa Sistem Informasi UIB.</p>
+      <p>Website ini dibuat sebagai portofolio dan tugas perkuliahan.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROFIL -->
+<div id="profil" class="section">
+  <div class="profil-container">
+    <div class="profil-header">
+      <img src="pas photo.jpeg">
+      <div>
+        <h2>Khalisha Zahrotus Sita</h2>
+        <p>NPM: 2531156</p>
+        <p>Program Studi Sistem Informasi</p>
+      </div>
+    </div>
+
+    <h3>Tentang Saya</h3>
+    <p>
+      Saya memiliki ketertarikan pada desain visual, digital art, dan UI.
+      Beberapa karya dibuat menggunakan referensi sebagai proses pembelajaran.
+    </p>
+
+    <h3>Minat & Hobi</h3>
+    <ul>
+      <li>Desain Poster</li>
+      <li>Digital Art</li>
+      <li>Editing</li>
+    </ul>
+
+    <h3>MBTI</h3>
+    <p>INFJ</p>
+  </div>
+</div>
+
+<!-- RESUME -->
+<div id="resume" class="section">
+  <div class="card">
+    <h2>Riwayat Pendidikan</h2>
+    <ul>
+      <li>Universitas Internasional Batam – Sistem Informasi</li>
+      <li>SMA …</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PORTOFOLIO -->
+<div id="portofolio" class="section">
+  <div class="portfolio-container">
+    <h2>Portofolio</h2>
+    <p>
+      Berikut beberapa karya desain poster dan digital art.
+      Beberapa karya dibuat menggunakan referensi.
+    </p>
+
+    <div class="portfolio-grid">
+
+      <!-- POSTER -->
+      <div>
+        <h3>🎨 Poster</h3>
+        <div class="portfolio-card" onclick="openModal('poster1.jpg')">
+          <img src="poster1.jpg">
+          <div class="portfolio-info">
+            <h4>Poster Edukasi</h4>
+            <small>📌 Menggunakan referensi</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIGITAL ART -->
+      <div>
+        <h3>🖌️ Digital Art</h3>
+
+        <div class="portfolio-card" onclick="openModal('art1.jpeg')">
+          <img src="art1.jpeg">
+          <div class="portfolio-info">Digital Art 1</div>
+        </div>
+
+        <div class="portfolio-card" onclick="openModal('art2.jpeg')">
+          <img src="art2.jpeg">
+          <div class="portfolio-info">Digital Art 2</div>
+        </div>
+
+        <div class="portfolio-card" onclick="openModal('art3.jpeg')">
+          <img src="art3.jpeg">
+          <div class="portfolio-info">Digital Art 3</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KONTAK -->
+<div id="kontak" class="section">
+  <div class="card">
+    <p>📞 08xxxxxxxxxx</p>
+    <p>📧 khalisha@email.com</p>
+    <p>📷 @khalisha</p>
+  </div>
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <img id="modalImg">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
