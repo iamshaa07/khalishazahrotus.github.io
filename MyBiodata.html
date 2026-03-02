@@ -723,6 +723,52 @@ button{
   color:#777;
 }
 
+/* ===== EDUCATION TABLE ===== */
+.education-table-wrapper{
+  margin-top:10px;
+  overflow-x:auto;
+}
+
+.education-table{
+  width:100%;
+  border-collapse:collapse;
+  border-radius:18px;
+  overflow:hidden;
+  background:#fffaf5;
+  box-shadow:0 12px 25px rgba(0,0,0,0.08);
+}
+
+.education-table thead{
+  background:linear-gradient(135deg,#f2c1cf,#7bbcd6);
+  color:white;
+}
+
+.education-table th,
+.education-table td{
+  padding:14px 18px;
+  text-align:left;
+  font-size:14px;
+}
+
+.education-table th{
+  font-weight:700;
+  letter-spacing:0.5px;
+}
+
+.education-table tbody tr{
+  border-bottom:1px solid #f0e0d0;
+  transition:0.3s ease;
+}
+
+.education-table tbody tr:nth-child(even){
+  background:#fff7ee;
+}
+
+.education-table tbody tr:hover{
+  background:#fff0f5;
+  transform:scale(1.01);
+}
+
 /* SKILLS */
 .skill-list{
   display:flex;
@@ -903,7 +949,7 @@ button{
       <small>Mahasiswa Sistem Informasi</small>
     </div>
   </div>
-  <div class="header-item">📧 isyakhalis1007@email.com</div>
+  <div class="header-item">📧 khalisha@email.com</div>
   <div class="header-item">📍 Universitas Internasional Batam</div>
 </div>
 
@@ -1045,27 +1091,39 @@ button{
     <div class="resume-card">
       <h3>Riwayat Pendidikan</h3>
 
-      <ul class="education-list">
-        <li>
-          <span class="edu-title">Universitas Internasional Batam</span>
-          <span class="edu-desc">Sistem Informasi (2025 – Sekarang)</span>
-        </li>
-
-        <li>
-          <span class="edu-title">SMA Negeri 3 Karimun</span>
-          <span class="edu-desc">IPA (2022 – 2025)</span>
-        </li>
-
-        <li>
-          <span class="edu-title">SMP Negeri 1 Meral</span>
-          <span class="edu-desc">(2019 – 2022)</span>
-        </li>
-
-        <li>
-          <span class="edu-title">SD Negeri 009 Meral</span>
-          <span class="edu-desc">(2013 – 2019)</span>
-        </li>
-      </ul>
+      <div class="education-table-wrapper">
+  <table class="education-table">
+    <thead>
+      <tr>
+        <th>Tahun</th>
+        <th>Institusi</th>
+        <th>Jurusan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2025 – Sekarang</td>
+        <td>Universitas Internasional Batam</td>
+        <td>Sistem Informasi</td>
+      </tr>
+      <tr>
+        <td>2022 – 2025</td>
+        <td>SMA Negeri 3 Karimun</td>
+        <td>IPA</td>
+      </tr>
+      <tr>
+        <td>2019 – 2022</td>
+        <td>SMP Negeri 1 Meral</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>2013 – 2019</td>
+        <td>SD Negeri 009 Meral</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     </div>
 
     <!-- KEMAMPUAN -->
@@ -1223,8 +1281,8 @@ onclick="openModal(
 
   <div class="kontak-box">
     <div class="kontak-card">📞 082169960604</div>
-    <div class="kontak-card">📧 isyakhalis1007@email.com</div>
-    <div class="kontak-card">📷 @khalishazhroo</div>
+    <div class="kontak-card">📧 isyahalis1007@email.com</div>
+    <div class="kontak-card">📷 @khalisha</div>
   </div>
 
   <div class="card kontak">
