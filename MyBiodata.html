@@ -15,17 +15,22 @@
 
 body{
   margin:0;
-  background:#f7f3ed;
 }
 
 /* ===== HEADER ===== */
 .header{
   display:flex;
-  justify-content:center;   /* ⬅️ pusatkan seluruh isi */
+  justify-content:center;
   align-items:center;
   gap:300px;
   background:#e9f3f7;
   padding:20px 40px;
+
+  position:fixed;   /* bikin tetap */
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
 }
 
 
@@ -49,7 +54,7 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
-  padding-left:px;
+  padding-left:10px;
   border-left:2px solid #dbe6f2;
   font-size:14px;
   color:#444;
@@ -72,15 +77,6 @@ body{
 
 
 /* ===== NAV ===== */
-nav{
-  background:white;
-  display:flex;
-  justify-content:center;   /* ⬅️ ini kuncinya */
-  align-items:center;
-  gap:80px;
-  padding:12px 0;           /* supaya tidak berat sebelah */
-  border-bottom:2px solid #e0d8cd;
-}
 
 nav a{
   text-decoration:none;
@@ -97,11 +93,15 @@ nav a.active{
 
 /* ===== CONTENT ===== */
 .container{
+  margin-left:260px;  /* tambah jarak */
+  margin-right:120px;
   padding:30px;
+  margin-top:150px;
 }
 
 .section{
   display:none;
+  padding-top:20px;
 }
 
 .section.active{
@@ -185,10 +185,28 @@ nav a.active{
 .profil-container{
   max-width:900px;
   margin:auto;
-  background:#fff;
-  padding:30px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  padding:40px;
+  position:relative;
+  border-radius:28px;
+
+  background:#fff7ee;
+
+  box-shadow:0 18px 45px rgba(0,0,0,0.08);
+
+  border:4px solid #f0e0d0;
+}
+
+.profil-container::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:#f7efe6;
+  border-radius:50%;
+  top:-30px;
+  right:-30px;
+  z-index:-1;
+  display:none;
 }
 
 .profil-header{
@@ -205,7 +223,7 @@ nav a.active{
   height:150px;
   object-fit:cover;
   border-radius:10px;
-  border:2px solid #ddd;
+  border:4px solid #7bbcd6;
 }
 
 .profil-section{
@@ -213,8 +231,20 @@ nav a.active{
 }
 
 .profil-section h3{
-  margin-bottom:8px;
-  color:#3a4f7a;
+  font-size:20px;
+  margin-bottom:12px;
+
+  color:#7a5c48;
+}
+
+.profil-section h3::after{
+  content:"";
+  display:block;
+  width:60px;
+  height:4px;
+  margin-top:6px;
+  background:#f0e0d0;
+  border-radius:10px;
 }
 
 .profil-section p,
@@ -246,7 +276,13 @@ nav a.active{
 
 /* GRID 3 KOLom & CENTER */
 .portfolio-grid{
-/* GRID KHUSUS POSTER (1 ITEM) */
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+  margin-top:35px;
+  justify-items:center;
+}
+
 .portfolio-grid.single{
   grid-template-columns:1fr;
   justify-items:center;
@@ -255,35 +291,42 @@ nav a.active{
 
 .portfolio-section{
   display:flex;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
 }
 
-
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:25px;
-  max-width:900px;
-  margin:20px auto;
-  justify-items:center;
+.section-title{
+  margin-bottom:25px;
 }
 
 /* CARD */
 .portfolio-card{
   width:100%;
-  max-width:240px;
-  background:#fff6ec; /* krem pastel */
+  max-width:260px;
+  background:#fff6ec;
   border-radius:22px;
   overflow:hidden;
   cursor:pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  border:3px solid #f0e0d0; /* frame krem */
+  border:3px solid #f0e0d0;
+
+  transition:transform 0.4s ease,
+             box-shadow 0.4s ease,
+             filter 0.4s ease;
 }
 
-.portfolio-card:hover{
-transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+  margin-top:35px;
+  justify-items:center;
 }
 
+.portfolio-section{
+  display:flex;
+  justify-content:center;
+}
 
 /* FRAME 3:4 */
 .img-frame{
@@ -325,38 +368,12 @@ transform: translateY(-8px) scale(1.03);
 /* RESPONSIVE */
 @media(max-width:768px){
   .portfolio-grid{
+    max-width:900px;
+    margin:35px auto;
     grid-template-columns:1fr;
   }
 }
 
-/* ===== KONTAK ===== */
-.kontak-box{
-  display:flex;
-  gap:20px;
-  margin-bottom:20px;
-}
-
-.kontak-card{
-  flex:1;
-  padding:15px;
-  background:#f3f7fb;
-  border-radius:12px;
-}
-
-.kontak{
-  display:flex;
-  gap:30px;
-}
-
-.kontak iframe{
-  flex:2;
-  border:none;
-  border-radius:15px;
-}
-
-.kontak-form{
-  flex:1;
-}
 
 input,textarea{
   width:100%;
@@ -521,9 +538,11 @@ button{
 .music-btn{
   background:linear-gradient(135deg,#f2c1cf,#7bbcd6);
   border:none;
-  padding:10px 22px;
-  border-radius:30px;
+  width:auto;        /* ⬅️ bikin ga full */
+  display:inline-block;
+  padding:6px 18px;
   font-size:13px;
+  border-radius:30px;
   font-weight:600;
   color:#fff;
   cursor:pointer;
@@ -553,6 +572,8 @@ button{
   height:420px;
   object-fit:cover;
   border-radius:24px;
+  border:6px solid #f0e0d0; /* border krem */
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
 }
 
 
@@ -602,9 +623,29 @@ button{
   width:10px;
 }
 
-#resume {
-  max-width: 900px;
-  margin: auto;
+.profil-header{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.profil-header img{
+  width:160px;
+  border-radius:20px;
+
+  border:4px solid #f0e0d0;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+#resume{
+  max-width:900px;
+  margin:auto;
+
+  background:#fff7ee;
+  padding:30px;
+  border-radius:25px;
 }
 
 .edu-item{
@@ -671,10 +712,12 @@ button{
 
 .resume-title{
   text-align:center;
-  font-size:28px;
-  font-weight:800;
-  color:#7a5c48;
-  margin-bottom:10px;
+  font-size:32px;
+  font-weight:900;
+
+  background:linear-gradient(90deg,#f2c1cf,#7bbcd6);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .resume-card{
@@ -682,12 +725,14 @@ button{
   padding:28px;
   border-radius:22px;
   box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+  border-left:6px solid #7bbcd6;
 }
 
 .resume-card h3{
   margin-top:0;
   margin-bottom:12px;
-  color:#3a4f7a;
+  color:#7bbcd6;
 }
 
 .resume-card p{
@@ -778,7 +823,7 @@ button{
 
 .skill-list span{
   padding:8px 14px;
-  background:#fff0f4;
+  background:#e9f3f7;
   border-radius:20px;
   font-size:13px;
   font-weight:600;
@@ -923,22 +968,285 @@ button{
   padding-top:20px;
 }
 
+.bottom-btn{
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  background:#fff6ec;
+  color:#7a5c48;
+  box-shadow:0 8px 18px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.bottom-btn:hover{
+  transform:translateY(-3px);
+  background:#f2e4d4;
+}
+
+.bottom-actions{
+  display:flex;
+  justify-content:center;
+  margin-top:18px;
+}
+
+/* ===== SIDE BAR AESTHETIC ===== */
+
+.sidebar-left{
+  position:fixed;
+  top:0;
+  left:0;
+  width:210px;
+  height:100vh;
+
+  background:#fff7ee;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:55px;
+
+  padding-left:45px;
+
+  border-right:5px solid #f0e0d0;
+}
+
+.sidebar-right{
+  position:fixed;
+  top:0;
+  right:0;
+  width:95px;
+  height:100vh;
+
+  background:#fff7ee;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border-left:5px solid #f0e0d0;
+}
+
+.sidebar-left a{
+  font-size:22px;
+  text-decoration:none;
+  color:#5a4b3a;
+  font-weight:600;
+
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  transition:0.3s;
+}
+
+.sidebar-left a:hover{
+  transform:translateX(6px);
+}
+
+.sidebar-left a:hover{
+  color:#7bbcd6;
+  transform:translateX(6px);
+}
+
+.sidebar-left a.active{
+  color:#7bbcd6;
+  font-weight:700;
+}
+
+/* ===== PORTFOLIO HOVER EFFECT ===== */
+.portfolio-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.portfolio-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  opacity:0;
+  transition:0.4s;
+}
+
+.portfolio-card:hover::before{
+  opacity:1;
+  animation: shine 1s ease;
+}
+
+@keyframes shine{
+  from{
+    transform:translateX(-100%);
+  }
+  to{
+    transform:translateX(100%);
+  }
+}
+
+
+/* ===== IMAGE ZOOM ===== */
+.img-frame img{
+  transition:transform 0.4s ease;
+}
+
+.portfolio-card:hover img{
+  transform:scale(1.08);
+}
+
+
+/* ===== CARD LIFT ===== */
+.portfolio-card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 18px 40px rgba(0,0,0,0.2);
+}
+
+
+/* ===== INFO ANIMATION ===== */
+.portfolio-info{
+  transition:0.3s;
+}
+
+.portfolio-card:hover .portfolio-info{
+  background:#fff0f4;
+}
+
+
+/* ===== TITLE STYLE ===== */
+.portfolio-title{
+  font-size:32px;
+  font-weight:800;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.portfolio-desc{
+  text-align:center;
+  max-width:600px;
+  margin:0 auto 35px;
+}
+
+
+/* ===== GRID SPACING ===== */
+.portfolio-grid{
+  padding-top:10px;
+}
+
+
+/* ===== SCROLL REVEAL EFFECT ===== */
+.portfolio-card{
+  opacity:0;
+  transform:translateY(30px);
+  animation:cardReveal 0.8s ease forwards;
+}
+
+.portfolio-card:nth-child(1){animation-delay:0.2s;}
+.portfolio-card:nth-child(2){animation-delay:0.4s;}
+.portfolio-card:nth-child(3){animation-delay:0.6s;}
+
+@keyframes cardReveal{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.right-icons{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;   /* center atas bawah */
+  align-items:center;       /* center kiri kanan */
+
+  gap:25px;
+}
+
+.right-icons a{
+  font-size:24px;
+  text-decoration:none;
+  color:#6b5b4b;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:45px;
+  height:45px;
+  border-radius:50%;
+
+  transition:0.3s;
+}
+
+.right-icons a:hover{
+  transform:scale(1.2);
+  background:#fff0f4;
+}
+
+.contact-title{
+  writing-mode:vertical-rl;
+
+  font-family:'Quicksand', sans-serif;
+
+  font-size:18px;
+  font-weight:800;
+
+  letter-spacing:6px;
+
+  color:#7a5c48;
+}
+
+.sidebar-left a{
+  position:relative;
+}
+
+.sidebar-left a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:3px;
+  background:#7bbcd6;
+  transition:0.3s;
+}
+
+.sidebar-left a:hover::after{
+  width:40px;
+}
 
 </style>
 </head>
 
-<div id="imgModal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <img id="modalImg">
+<body>
 
-    <div class="modal-text">
-      <h3 id="modalTitle"></h3>
-      <p id="modalDesc"></p>
-    </div>
-  </div>
+<div class="sidebar-left">
+
+<a onclick="showPage('beranda',this)" class="active">🏠 Beranda</a>
+<a onclick="showPage('profil',this)">👤 Profil</a>
+<a onclick="showPage('resume',this)">📄 Resume</a>
+<a onclick="showPage('portofolio',this)">🎨 Portofolio</a>
+
 </div>
 
-<body>
+<div class="sidebar-right">
+
+<div class="right-icons">
+
+<p class="contact-title">Kontak</p>
+
+<a href="https://instagram.com/khalishazhroo" target="_blank">📷</a>
+
+<a href="mailto:isyakhalis1007@gmail.com">✉</a>
+
+</div>
+
+</div>
 
 <!-- HEADER -->
 <div class="header">
@@ -954,14 +1262,6 @@ button{
 </div>
 
 <!-- NAV -->
-<nav>
-  <a class="active" onclick="showPage('beranda',this)">Beranda</a>
-  <a onclick="showPage('profil',this)">Profil</a>
-  <a onclick="showPage('resume',this)">Resume</a>
-  <a onclick="showPage('portofolio',this)">Portofolio</a>
-  <a onclick="showPage('kontak',this)">Kontak</a>
-</nav>
-
 <div class="container">
 
 <!-- BERANDA -->
@@ -975,11 +1275,6 @@ button{
   <h1>Khalisha</h1>
   <p>Mahasiswa Sistem Informasi • Visual Designer • Web Enthusiast</p>
 
-  <div class="hero-actions">
-    <a onclick="showPage('portofolio',this)">Lihat Portofolio</a>
-
-    <button class="music-btn" onclick="toggleMusic()">▶ Play Music</button>
-  </div>
 </div>
 
 <audio id="bgMusic" loop>
@@ -990,23 +1285,21 @@ button{
 
 
   <!-- PERKENALAN SINGKAT -->
-  <div class="beranda-intro">
-    <h2>Halo, aku Khalisha 👋</h2>
-    <p>
-      Mahasiswa Sistem Informasi Universitas Internasional Batam yang tertarik
-      pada desain visual, digital art, dan pengembangan website.
-    </p>
+<div class="beranda-intro">
+  <h2>Halo, aku Khalisha 👋</h2>
+  <p>
+    Mahasiswa Sistem Informasi Universitas Internasional Batam yang tertarik
+    pada desain visual, digital art, dan pengembangan website.
+  </p>
+
+  <div class="bottom-actions">
+    <button class="music-btn" onclick="toggleMusic()">
+      ▶ Play Music
+    </button>
   </div>
 
-  <div class="highlight">
-  <div class="highlight-card">🎨<br>Desain Visual</div>
-  <div class="highlight-card">💻<br>Web Development</div>
-  <div class="highlight-card">📚<br>Sistem Informasi</div>
 </div>
-
 </div>
-
-
 
 <!-- PROFIL -->
 <div id="profil" class="section">
@@ -1014,13 +1307,14 @@ button{
   <div class="profil-container">
 
     <div class="profil-header">
-      <img src="pasphoto.jpeg">
-      <div>
-        <h2>Khalisha Zahrotus Sita</h2>
-        <p>NPM: 2531156</p>
-        <p>Mahasiswa Sistem Informasi</p>
-      </div>
-    </div>
+  <img src="pasphoto.jpeg" alt="Foto Profil">
+
+  <div>
+    <h2>Khalisha Zahrotus Sita</h2>
+    <p>NPM: 2531156</p>
+    <p>Mahasiswa Sistem Informasi</p>
+  </div>
+</div>
 
     <div class="profil-section">
       <h3>Tentang Saya</h3>
@@ -1186,37 +1480,12 @@ function toggleMusic(){
     btn.classList.add("playing");
   }else{
     music.pause();
-    btn.innerText = "▶ Play Me";
+    btn.innerText = "▶ Play Music";
     btn.classList.remove("playing");
   }
   isPlaying = !isPlaying;
 }
 </script>
-
-
- <!-- DESAIN POSTER -->
-<div class="portfolio-section pastel-pink">
-  <h3 class="section-title">🎨 DESAIN POSTER</h3>
-
-  <div class="portfolio-grid single">
-    <div class="portfolio-card"
-onclick="openModal(
-  'poster1.jpg',
-  'Poster Edukasi',
-  'Desain poster kegiatan kampus dengan fokus komposisi dan warna.'
-)">
-
-      <div class="img-frame">
-        <img src="poster1.jpg">
-      </div>
-      <div class="portfolio-info">
-        <h4>Poster Kegiatan Kampus</h4>
-        <small>📌 Menggunakan referensi</small>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <!-- DIGITAL ART -->
 <div class="portfolio-section pastel-cream">
@@ -1276,27 +1545,6 @@ onclick="openModal(
 </div> <!-- tutup .portfolio-container -->
 </div> <!-- tutup #portofolio -->
 
-<!-- KONTAK -->
-<div id="kontak" class="section">
-
-  <div class="kontak-box">
-    <div class="kontak-card">📞 082169960604</div>
-    <div class="kontak-card">📧 isyahalis1007@email.com</div>
-    <div class="kontak-card">📷 @khalisha</div>
-  </div>
-
-  <div class="card kontak">
-    <iframe src="https://www.google.com/maps?q=Universitas%20Internasional%20Batam&output=embed"></iframe>
-    <div class="kontak-form">
-      <input placeholder="Nama">
-      <input placeholder="Email">
-      <textarea placeholder="Pesan"></textarea>
-      <button>Kirim</button>
-    </div>
-  </div>
-</div>
-
-</div>
 
 <!-- MODAL -->
 <div id="imgModal" class="modal" onclick="closeModal()">
@@ -1318,7 +1566,7 @@ onclick="openModal(
 <script>
 function showPage(id,el){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.sidebar-left a').forEach(a=>a.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
 }
