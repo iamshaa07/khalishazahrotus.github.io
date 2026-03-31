@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Nama Kamu</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  :root {
+    --bg: #fdf6f0;
+    --sidebar-l: #f5ede3;
+    --sidebar-r: #ede3f5;
+    --accent1: #c49a8a;
+    --accent2: #9a7ec4;
+    --accent3: #7ec4b8;
+    --text: #3a2e2a;
+    --text-light: #7a6a64;
+    --card: #ffffff;
+    --border: #e8d8cc;
+    --border2: #d8cce8;
+    --pink: #f0c4c4;
+    --lav: #c4c4f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+}
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 3px; }
+
+  /* LEFT SIDEBAR */
+.sidebar-left {
+  width: 215px;
+  min-width: 215px;
+  flex-shrink: 0;
+  background: var(--sidebar-l);
+  border-right: 1.5px solid var(--border);
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px;
+  gap: 22px;
+  z-index: 100;
+}
+
+  .profile-mini { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .avatar-wrap {
+    width: 74px; height: 74px; border-radius: 50%;
+    border: 3px solid var(--accent1);
+    background: linear-gradient(135deg, var(--pink), var(--lav));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(196,154,138,0.3);
+    transition: transform 0.3s;
+  }
+  .avatar-wrap:hover { transform: scale(1.07); }
+  .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; }
+  .sidebar-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; text-align: center; line-height: 1.3; }
+  .sidebar-role { font-size: 0.68rem; color: var(--accent2); text-align: center; letter-spacing: 0.06em; font-weight: 500; text-transform: uppercase; }
+  .divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 10px 0;
+}
+
+section {
+  scroll-margin-top: 20px;
+}
+  .nav-label { font-size: 0.62rem; color: var(--accent1); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding-left: 2px; }
+  .nav-links { display: flex; flex-direction: column; gap: 2px; }
+  .nav-links a {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 10px; border-radius: 10px; text-decoration: none;
+    color: var(--text-light); font-size: 0.8rem; font-weight: 500;
+    transition: all 0.2s; position: relative;
+  }
+  .nav-links a:hover, .nav-links a.active { background: rgba(196,154,138,0.15); color: var(--accent1); }
+  .nav-links a i { width: 15px; text-align: center; font-size: 0.82rem; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent1); position: absolute; left: 3px; opacity: 0; transition: opacity 0.2s; }
+  .nav-links a:hover .dot, .nav-links a.active .dot { opacity: 1; }
+
+  /* RIGHT SIDEBAR */
+.sidebar-right {
+  width: 205px;
+  min-width: 205px;
+  flex-shrink: 0;
+  background: var(--sidebar-r);
+  border-left: 1.5px solid var(--border2);
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 16px;
+  gap: 18px;
+  z-index: 100;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+  .side-r-label { font-size: 0.62rem; color: var(--accent2); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .funfact-card {
+    background: #fff; border-radius: 13px; padding: 13px;
+    border: 1.5px solid var(--border2); cursor: pointer;
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .funfact-card::before {
+    content:''; position: absolute; top:0;left:0;right:0;height:3px;
+    background: linear-gradient(90deg,var(--accent2),var(--accent3));
+    border-radius: 13px 13px 0 0;
+  }
+  .funfact-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(154,126,196,0.2); }
+  .ff-icon { font-size: 1.3rem; margin-bottom: 5px; }
+  .ff-text { font-size: 0.74rem; color: var(--text-light); line-height: 1.55; }
+  .ff-nav { display:flex;gap:5px;margin-top:9px;justify-content:center; }
+  .ff-dot { width:6px;height:6px;border-radius:50%;background:var(--border2);cursor:pointer;transition:background 0.2s; }
+  .ff-dot.active { background:var(--accent2); }
+  .quote-box {
+    background: linear-gradient(135deg,#f0ebfa,#e8f0fa);
+    border-radius: 13px; padding: 14px;
+    border: 1.5px solid var(--border2); position: relative;
+  }
+  .quote-box::before {
+    content: '"'; font-family: 'Playfair Display',serif; font-size: 3rem;
+    color: var(--accent2); opacity: 0.2;
+    position: absolute; top:-4px;left:7px; line-height:1;
+  }
+  .q-text { font-family:'Cormorant Garamond',serif; font-size:0.86rem; color:var(--text); line-height:1.65; font-style:italic; padding-top:4px; }
+  .q-author { font-size:0.67rem; color:var(--accent2); margin-top:7px; font-weight:500; }
+  .q-refresh { position:absolute;bottom:9px;right:9px;background:none;border:none;cursor:pointer;color:var(--accent2);font-size:0.78rem;transition:transform 0.3s; }
+  .q-refresh:hover { transform:rotate(180deg); }
+  .mood-box { background:#fff;border-radius:13px;padding:13px;border:1.5px solid var(--border2);text-align:center; }
+  .mood-emoji { font-size:1.8rem;margin-bottom:4px; }
+  .mood-txt { font-size:0.72rem;color:var(--text-light); }
+  .mood-btns { display:flex;justify-content:center;gap:7px;margin-top:9px; }
+  .mood-btns button { background:none;border:none;font-size:1.1rem;cursor:pointer;transition:transform 0.15s; }
+  .mood-btns button:hover { transform:scale(1.3); }
+
+  /* MAIN */
+.main {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  margin-right: 205px;
+}
+
+  section { min-height:100vh; padding:56px 48px; scroll-snap-align:start; position:relative; overflow:hidden; }
+
+  /* SECTION HEADER */
+  .sec-tag { display:inline-block;font-size:0.63rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent1);border:1.5px solid var(--accent1);border-radius:20px;padding:3px 12px;margin-bottom:14px; }
+  .sec-title {
+  text-align: left;
+  border-left: 4px solid var(--accent1);
+  padding-left: 12px;
+}
+  .sec-sub { color:var(--text-light);font-size:0.86rem;margin-bottom:34px; }
+
+  /* HOME */
+  #home { background:linear-gradient(155deg,#fdf6f0 0%,#f5ede3 55%,#ede3f5 100%); display:flex;flex-direction:column;justify-content:center;padding-top:70px; }
+  .home-inner { display:flex;align-items:center;gap:48px;flex-wrap:wrap; }
+  .home-photo {
+    width:220px;height:270px;border-radius:24px 8px 24px 8px;
+    background:linear-gradient(145deg,var(--pink),var(--lav));
+    border:4px solid white;box-shadow:0 14px 36px rgba(196,154,138,0.24);
+    overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .home-photo img { width:100%;height:100%;object-fit:cover; }
+  .photo-placeholder { display:flex;flex-direction:column;align-items:center;gap:7px;color:rgba(255,255,255,0.65);font-size:0.73rem;text-align:center;padding:18px; }
+  .photo-placeholder i { font-size:2.4rem; }
+  .photo-hint { position:absolute;bottom:10px;background:rgba(255,255,255,0.85);border-radius:8px;padding:4px 10px;font-size:0.62rem;color:var(--text-light);backdrop-filter:blur(4px); }
+  .home-text { flex:1;min-width:210px; }
+  .greeting { font-size:0.88rem;color:var(--accent2);font-weight:500;margin-bottom:7px;display:flex;align-items:center;gap:7px; }
+  .wave { display:inline-block;animation:wave 1.6s infinite;transform-origin:bottom right; }
+  @keyframes wave { 0%,60%,100%{transform:rotate(0)} 20%{transform:rotate(-15deg)} 40%{transform:rotate(10deg)} }
+  .home-name { font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin-bottom:11px;background:linear-gradient(135deg,var(--text),var(--accent1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .home-role { display:inline-flex;align-items:center;gap:7px;background:white;border:1.5px solid var(--border);border-radius:30px;padding:5px 15px;font-size:0.78rem;color:var(--text-light);margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+  .home-role span { color:var(--accent2);font-weight:600; }
+  .home-desc { font-size:0.9rem;color:var(--text-light);line-height:1.78;max-width:420px;margin-bottom:26px; }
+  .badges { display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px; }
+  .badge { background:white;border:1.5px solid var(--border);border-radius:9px;padding:6px 13px;font-size:0.74rem;color:var(--text-light);display:flex;align-items:center;gap:6px;box-shadow:0 2px 7px rgba(0,0,0,0.04);transition:all 0.2s; }
+  .badge:hover { border-color:var(--accent1);color:var(--accent1);transform:translateY(-2px); }
+  .cta { display:flex;gap:11px;flex-wrap:wrap; }
+  .btn-p { background:var(--accent1);color:white;border:none;border-radius:11px;padding:11px 22px;font-size:0.83rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all 0.3s;box-shadow:0 4px 15px rgba(196,154,138,0.38); }
+  .btn-p:hover { transform:translateY(-2px);box-shadow:0 7px 22px rgba(196,154,138,0.48); }
+  .btn-o { background:transparent;color:var(--accent2);border:1.5px solid var(--accent2);border-radius:11px;padding:11px 22px;font-size:0.83rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all 0.3s; }
+  .btn-o:hover { background:var(--accent2);color:white;transform:translateY(-2px); }
+  .deco { position:absolute;border-radius:50%;opacity:0.1;pointer-events:none; }
+
+  /* HOME INTERACTIVE */
+#home {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.home-prop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  z-index: 2;
+}
+
+.home-prop:hover {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.home-prop:hover .prop-tag {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.prop-icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  transition: transform 0.2s;
+}
+
+.home-prop:hover .prop-icon {
+  transform: scale(1.15);
+}
+
+.prop-tag {
+  background: white;
+  border: 1.5px solid var(--accent1);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent1);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(196,154,138,0.2);
+  pointer-events: none;
+}
+
+/* POLAROID STYLE */
+.polaroid-prop {
+  background: white;
+  padding: 7px 7px 28px 7px;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  width: 100px;
+  transform: rotate(-3deg);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.home-prop:nth-child(even) .polaroid-prop {
+  transform: rotate(3deg);
+}
+
+.home-prop:hover .polaroid-prop {
+  transform: rotate(0deg) scale(1.08) translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.22);
+}
+
+.polaroid-prop img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+.polaroid-caption {
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+  /* ABOUT */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+/* BIODATA FULL WIDTH */
+.about-bio {
+  grid-column: 1 / -1;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-top {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+/* TEXT BOX */
+.about-text {
+  background: linear-gradient(135deg, #ffffff, #f8f4ff);
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid var(--border);
+}
+
+.about-bottom {
+  margin-top: 40px;
+}
+
+.bio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.bio-table tr {
+  transition: background 0.2s;
+}
+
+.bio-table tr:hover {
+  background: #f8f4ff;
+}
+
+.bio-table td {
+  padding: 12px 14px;
+}
+
+.bio-table td:first-child {
+  font-weight: 600;
+  color: var(--accent2);
+  width: 40%;
+}
+
+.bio-table td:last-child {
+  color: var(--text);
+}
+
+/* garis halus */
+.bio-table tr:not(:last-child) td {
+  border-bottom: 1px solid var(--border);
+}
+
+/* MBTI badge */
+.mbti-badge {
+  background: linear-gradient(135deg, var(--accent2), var(--accent3));
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+  #about { background:#fff; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.about-new {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* FOTO */
+.about-img {
+  width: 260px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  border: 5px solid white;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(196,154,138,0.3), rgba(154,126,196,0.3));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.about-img:hover::after {
+  opacity: 1;
+}
+
+.about-img:hover img {
+  transform: scale(1.08) rotate(1deg);
+}
+
+.about-text {
+  background: linear-gradient(135deg, #ffffff, #f8f4ff);
+  padding: 24px 26px;
+  border-radius: 20px;
+
+  font-family: 'Inter', sans-serif; /* UI/UX font */
+  font-size: 0.92rem;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+
+  color: var(--text-light);
+
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+/* ANIMASI MASUK */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Judul / highlight */
+.about-text strong {
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+/* Paragraf lebih rapi */
+.about-text p {
+  margin-bottom: 16px;
+}
+
+/* Quote jadi lebih UI */
+.about-text .quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; /* lebih besar */
+  font-style: italic;
+  color: var(--text); /* lebih kontras */
+}
+
+/* LINK */
+.about-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--accent1);
+  border-bottom: 1px solid var(--accent1);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .about-new {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-img {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+/* FOTO */
+.about-photo-card {
+  border-radius: 28px;
+  overflow: hidden;
+  background: white;
+  border: 6px solid white;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.about-photo-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+/* CAPTION */
+.photo-caption {
+  padding: 18px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-light);
+  text-align: center;
+  background: linear-gradient(135deg, #f5ede3, #ede3f5);
+}
+
+/* KANAN */
+.about-right {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: -20px; /* geser ke kiri */
+}
+
+/* CARD */
+.about-info {
+  width: 100%;
+  max-width: 420px;
+}
+
+.bio-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 22px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ITEM BARU (NO TABLE STYLE) */
+.bio-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffffff, #f8f4ff);
+  transition: all 0.25s;
+}
+
+.bio-item:hover {
+  transform: translateX(6px);
+  box-shadow: 0 6px 18px rgba(154,126,196,0.15);
+}
+
+/* LABEL */
+.bio-label {
+  font-size: 0.7rem;
+  color: var(--accent2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* VALUE */
+.bio-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* MBTI */
+.bio-value.mbti {
+  display: inline-block;
+  width: fit-content;
+  background: linear-gradient(135deg, var(--accent2), var(--accent3));
+  color: white;
+  padding: 4px 12px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  margin-top: 3px;
+}
+
+.bio-item:hover {
+  background: linear-gradient(135deg, var(--sidebar-l), var(--sidebar-r));
+  transform: translateX(4px);
+}
+
+.bio-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+  min-width: 110px;
+}
+
+.bio-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* MBTI special badge */
+.bio-value.mbti {
+  background: linear-gradient(135deg, var(--accent2), var(--accent3));
+  color: white;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+}
+
+.about-card {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+
+  background: linear-gradient(135deg, #ffffff, #f8f4ff);
+  border-radius: 24px;
+  padding: 20px;
+
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* FOTO */
+.about-photo-card img {
+  width: 100%;
+  aspect-ratio: 3/4; /* atau 4/5, 1/1 sesuai foto kamu */
+  object-fit: cover;
+}
+
+.about-card .about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT */
+.about-card .about-text {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+@media(max-width:768px){
+  .about-card {
+    flex-direction: column;
+  }
+
+  .about-card .about-img {
+    width: 100%;
+    height: 260px;
+  }
+}
+
+/* FOTO */
+.about-photo-card img {
+  width: 100%;
+  aspect-ratio: 3/4; /* atau 4/5, 1/1 sesuai foto kamu */
+  object-fit: cover;
+}
+
+/* BAGIAN BAWAH (caption) */
+.photo-caption {
+  padding: 14px;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-light);
+  text-align: center;
+  background: linear-gradient(135deg, #f5ede3, #ede3f5);
+  border-top: 1px solid var(--border);
+}
+
+.photo-caption {
+  padding: 16px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  text-align: left; /* biar lebih rapi dibaca */
+  background: linear-gradient(135deg, #f5ede3, #ede3f5);
+  border-top: 1px solid var(--border);
+
+  font-family: 'DM Sans', sans-serif; /* GANTI FONT */
+}
+
+
+/* FOTO CARD */
+.about-photo-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+/* FOTO */
+.about-photo-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* landscape */
+  object-fit: cover;
+}
+
+/* CAPTION */
+.photo-caption {
+  padding: 16px;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-light);
+  text-align: center;
+  background: linear-gradient(135deg, #f5ede3, #ede3f5);
+}
+
+.photo-caption strong {
+  color: var(--accent2);
+}
+
+/* BIODATA KANAN */
+
+.about-info {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media(max-width:768px){
+
+  .about-photo {
+    height: 260px;
+  }
+}
+
+#wireframe .proj-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+  /* PROJECT */
+  #project { background:var(--bg); }
+  .proj-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px; }
+  .proj-card { background:white;border-radius:17px;border:1.5px solid var(--border);overflow:hidden;transition:all 0.3s; }
+  .proj-card:hover { transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.09); }
+  .proj-thumb { height:145px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden; }
+  .proj-thumb.game { background:linear-gradient(135deg,#1a1a2e,#16213e); }
+  .proj-thumb.poster { background:linear-gradient(135deg,#f5e6cc,#f0c4c4); }
+  .proj-thumb.art { background:linear-gradient(135deg,var(--lav),var(--pink)); }
+  .proj-label { position:absolute;top:9px;right:9px;background:rgba(255,255,255,0.18);backdrop-filter:blur(8px);border-radius:7px;padding:2px 9px;font-size:0.63rem;font-weight:700;color:white;letter-spacing:0.08em;text-transform:uppercase; }
+  .proj-body { padding:15px; }
+  .proj-title { font-family:'Playfair Display',serif;font-size:0.97rem;font-weight:700;margin-bottom:5px; }
+  .proj-desc { font-size:0.74rem;color:var(--text-light);line-height:1.5;margin-bottom:11px; }
+  .proj-tags { display:flex;flex-wrap:wrap;gap:5px;margin-bottom:11px; }
+  .ptag { background:var(--bg);border-radius:5px;padding:2px 7px;font-size:0.65rem;color:var(--text-light);border:1px solid var(--border); }
+  .proj-cta { display:flex;gap:7px; }
+  .pb { flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:6px;font-size:0.71rem;cursor:pointer;text-align:center;color:var(--text-light);text-decoration:none;display:flex;align-items:center;justify-content:center;gap:4px;transition:all 0.2s;font-family:'DM Sans',sans-serif; }
+  .pb:hover { border-color:var(--accent1);color:var(--accent1); }
+  .pb.pr { background:var(--accent1);border-color:var(--accent1);color:white; }
+  .pb.pr:hover { background:#b8896e; }
+
+  /* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* CARD */
+.project-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: all 0.35s ease;
+}
+
+/* IMAGE */
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* HOVER EFFECT */
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* OVERLAY */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.2)
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+/* TEXT */
+.project-overlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.project-overlay p {
+  font-size: 0.75rem;
+  opacity: 0.9;
+}
+
+/* SHOW ON HOVER */
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* CARD HOVER */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  /* EXPERIENCE */
+  #experience { background:white; }
+  .exp-grid { display:grid;grid-template-columns:1fr 1fr;gap:38px; }
+  .ecol-title { font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:9px; }
+  .ecol-title i { color:var(--accent1);font-size:0.95rem; }
+  .timeline { position:relative;padding-left:20px; }
+  .timeline::before { content:'';position:absolute;left:5px;top:4px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent1),var(--border)); }
+  .tl { position:relative;margin-bottom:20px;padding-left:14px;animation:fiu 0.5s ease forwards;opacity:0; }
+  .tl:nth-child(1){animation-delay:0.1s} .tl:nth-child(2){animation-delay:0.2s} .tl:nth-child(3){animation-delay:0.3s} .tl:nth-child(4){animation-delay:0.4s}
+  @keyframes fiu { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .tl-dot { position:absolute;left:-20px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--accent1);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent1); }
+  .tl-dot.s { background:var(--accent2);box-shadow:0 0 0 2px var(--accent2); }
+  .tl-yr { font-size:0.64rem;color:var(--accent1);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px; }
+  .tl-t { font-size:0.86rem;font-weight:600;color:var(--text);margin-bottom:3px; }
+  .tl-s { font-size:0.74rem;color:var(--text-light);line-height:1.5; }
+  .tl-b { display:inline-block;background:linear-gradient(135deg,var(--accent2),var(--accent3));color:white;border-radius:5px;padding:2px 7px;font-size:0.63rem;font-weight:600;margin-top:4px; }
+  .ach { background:linear-gradient(135deg,var(--sidebar-l),var(--sidebar-r));border-radius:13px;padding:14px;border:1.5px solid var(--border);margin-bottom:10px;display:flex;gap:11px;align-items:flex-start; }
+  .ach-ic { width:34px;height:34px;border-radius:9px;background:white;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;box-shadow:0 2px 7px rgba(0,0,0,0.06); }
+  .ach-t { font-size:0.78rem;color:var(--text);line-height:1.55; }
+  .ach-t strong { color:var(--accent2); }
+  .sk-pills { display:flex;flex-wrap:wrap;gap:7px;margin-top:8px; }
+
+  /* HOBBIES */
+  #hobbies { background:var(--bg); }
+  .hgrid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+ /* HOBBIES GRID FIX */
+.hgrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.hgrid .hcard {
+  grid-column: span 2;
+}
+
+.hgrid .hcard:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.hgrid .hcard:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+/* CARD */
+.hcard {
+   border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, var(--accent1), var(--accent2)) border-box;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+}
+
+.hcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+.h-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.hcontent {
+  padding: 14px;
+}
+
+.h-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.h-desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+  .hcard.sw::before { background:linear-gradient(90deg,#7ec4e0,#7ed4c4); }
+  .hcard.ar::before { background:linear-gradient(90deg,var(--accent2),var(--pink)); }
+  .hcard.rd::before { background:linear-gradient(90deg,var(--accent1),#f0c4a4); }
+  .hcard.an::before { background:linear-gradient(90deg,#c4a0e0,var(--accent3)); }
+  .hcard.mu::before { background:linear-gradient(90deg,var(--pink),var(--lav)); }
+  .hcard.cd::before { background:linear-gradient(90deg,var(--accent3),#7ec490); }
+  .hcard:hover { transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,0.07); }
+  .hcard.s2 { grid-column:span 2; }
+  .h-icon { font-size:1.9rem;margin-bottom:9px; }
+  .h-name { font-family:'Playfair Display',serif;font-size:0.97rem;font-weight:700;margin-bottom:5px; }
+  .h-desc { font-size:0.75rem;color:var(--text-light);line-height:1.6; }
+  .h-tag { display:inline-block;background:var(--bg);border-radius:5px;padding:2px 7px;font-size:0.63rem;color:var(--accent1);font-weight:600;border:1px solid var(--border);margin-top:7px;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none; }
+
+  /* ANIME */
+  #anime { background:white; }
+  .agrid { display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px; }
+  .acard { border-radius:15px;overflow:hidden;border:2px solid var(--border);transition:all 0.3s;cursor:pointer;background:white; }
+  .acard:hover { transform:scale(1.04);border-color:var(--accent2);box-shadow:0 8px 22px rgba(154,126,196,0.22); }
+  .athumb { height:115px;display:flex;align-items:center;justify-content:center;font-size:2.3rem; }
+  .athumb.a1{background:linear-gradient(135deg,#1a1a3e,#3a1a5e)} .athumb.a2{background:linear-gradient(135deg,#1e3a1a,#2e5a1a)} .athumb.a3{background:linear-gradient(135deg,#3e1a1a,#6e2a2a)} .athumb.a4{background:linear-gradient(135deg,#1a2a3e,#1a3a5e)} .athumb.a5{background:linear-gradient(135deg,#2e1a3e,#4e2a5e)} .athumb.a6{background:linear-gradient(135deg,#3e2a1a,#6e4a2a)}
+  .ainfo { padding:9px; }
+  .atitle { font-size:0.78rem;font-weight:600;margin-bottom:3px; }
+  .agenre { font-size:0.66rem;color:var(--text-light); }
+  .arat { font-size:0.68rem;color:#f5a623;margin-top:3px; }
+/* FAVORITE MOVIES */
+#favorite .sec-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#favorite .sec-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.fav-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.fav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.fav-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.fav-title {
+  padding: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+}
+
+  /* CONTACT */
+  #contact { background:var(--bg); }
+  .cgrid { display:grid;grid-template-columns:1fr 1fr;gap:34px; }
+  .clinks { display:flex;flex-direction:column;gap:11px; }
+  .clink { display:flex;align-items:center;gap:13px;background:white;border:1.5px solid var(--border);border-radius:13px;padding:13px 16px;text-decoration:none;color:var(--text);transition:all 0.3s;font-size:0.83rem; }
+  .clink:hover { border-color:var(--accent1);transform:translateX(4px);box-shadow:0 4px 14px rgba(196,154,138,0.14); }
+  .cicon { width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;color:white; }
+  .cicon.em{background:linear-gradient(135deg,var(--accent1),#e08060)} .cicon.wa{background:linear-gradient(135deg,#25d366,#128c7e)} .cicon.ig{background:linear-gradient(135deg,#e1306c,#833ab4)} .cicon.gh{background:linear-gradient(135deg,#333,#555)}
+  .clabel { font-size:0.63rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.08em;font-weight:600; }
+  .cval { font-size:0.83rem;font-weight:500; }
+  .mbox { background:white;border-radius:17px;border:1.5px solid var(--border);overflow:hidden;min-height:260px;display:flex;flex-direction:column; }
+  .mhdr { padding:14px 16px 11px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;font-size:0.83rem;font-weight:600; }
+  .membed { flex:1;background:linear-gradient(135deg,var(--sidebar-l),var(--sidebar-r));display:flex;align-items:center;justify-content:center;font-size:0.78rem;color:var(--text-light);text-align:center;flex-direction:column;padding:20px;gap:5px; }
+  .membed i { font-size:1.8rem;color:var(--accent1);margin-bottom:7px; }
+  .map-btn { margin-top:9px;background:var(--accent1);color:white;border:none;border-radius:9px;padding:7px 16px;font-size:0.76rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-family:'DM Sans',sans-serif; }
+
+  footer { text-align:center;padding:28px;background:white;border-top:1.5px solid var(--border);font-size:0.76rem;color:var(--text-light); }
+  footer span { color:var(--accent1); }
+
+  .map-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* biar tengah */
+  text-align: center;
+  padding: 14px;
+  gap: 6px;
+}
+
+.map-info i {
+  font-size: 1.4rem;
+  color: var(--accent1);
+}
+
+.map-info strong {
+  font-size: 0.85rem;
+}
+
+.map-info span {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
+.map-info {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(135deg, #f5ede3, #ede3f5);
+  border-radius: 0 0 17px 17px;
+}
+
+ /* RESPONSIVE SIDEBAR RIGHT */
+@media(max-width:768px){
+  .sidebar-right{
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    right: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 10px;
+    gap: 10px;
+
+    border-left: none;
+    border-top: 1.5px solid var(--border2);
+
+    z-index: 999;
+  }
+
+  /* biar card nya jadi horizontal */
+  .sidebar-right > *{
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  /* kecilin dikit biar muat */
+  .funfact-card,
+  .quote-box,
+  .mood-box{
+    padding: 10px;
+  }
+
+  .side-r-label{
+    display: none; /* optional biar ga penuh */
+  }
+
+  /* kasih space biar ga ketutup sidebar */
+  .main{
+    padding-bottom: 100px;
+  }
+}
+  @media(max-width:768px){.sidebar-left{display:none}section{padding:36px 22px}.about-grid,.exp-grid,.cgrid{grid-template-columns:1fr}.hgrid{grid-template-columns:repeat(2,1fr)}.hcard.s2{grid-column:span 1}.home-inner{flex-direction:column}.home-name{font-size:2rem}.sec-title{font-size:1.7rem}}
+
+/* ===== HOME TITLE AESTHETIC ===== */
+.home-title-wrap {
+  text-align: center;
+  padding-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: titleFadeDown 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes titleFadeDown {
+  from { opacity:0; transform:translateY(-24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.home-title-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: rgba(255,248,240,0.88);
+  text-transform: uppercase;
+  font-weight: 600;
+  background: rgba(196,154,138,0.28);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  padding: 4px 18px;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,100% { letter-spacing:0.22em; opacity:0.88; }
+  50%      { letter-spacing:0.28em; opacity:1; }
+}
+
+.home-big-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 2px 18px rgba(139,90,60,0.35),
+    0 0 60px rgba(255,240,220,0.18);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  position: relative;
+  animation: titleFadeDown 1s ease 0.2s forwards;
+  opacity: 0;
+}
+
+/* garis dekorasi bawah judul */
+.home-big-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border-radius: 2px;
+  margin: 10px auto 0;
+  animation: lineGrow 1s ease 0.6s forwards;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+@keyframes lineGrow {
+  to { transform: scaleX(1); }
+}
+
+.home-title-sub {
+  font-size: 0.78rem;
+  color: rgba(255,248,240,0.8);
+  letter-spacing: 0.08em;
+  animation: titleFadeDown 1s ease 0.4s forwards;
+  opacity: 0;
+}
+
+/* ===== WALL FRAME / BINGKAI DINDING ===== */
+/* ===== WALL GRID KIRI KANAN ===== */
+.wall-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+  align-items: start;
+  padding: 40px 40px 80px;
+  width: 100%;
+  height: 100%;
+}
+
+.wall-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* lebih konsisten */
+}
+
+.wall-col.left {
+  margin-top: -20px;
+}
+
+.wall-col.right {
+  margin-top: -20px;
+}
+
+.wall-frame {
+  position: relative;
+  cursor: pointer;
+  transform: translateY(-20px) rotate(var(--rot));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  animation: frameDrop 0.6s cubic-bezier(.34,1.56,.64,1) var(--delay, 0s) forwards;
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+@keyframes frameDrop {
+  from { opacity:0; transform:rotate(var(--rot)) translateY(-30px); }
+  to   { opacity:1; transform:rotate(var(--rot)) translateY(0); }
+}
+
+.wall-frame:hover {
+  transform: scale(1.07) translateY(-6px);
+  z-index: 10;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.32));
+  transform: scale(1.08) rotate(0deg);
+}
+
+/* BINGKAI DALAM */
+.frame-inner {
+  width: 110px;
+  height: 140px; /* fix tinggi */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.frame-inner img {
+  width: 100%;
+  height: 85px;
+  object-fit: cover;
+}
+
+.wall-col.left .wall-frame:nth-child(2) {
+  margin-left: 12px;
+}
+
+.wall-col.left .wall-frame:nth-child(3) {
+  margin-left: 4px;
+}
+
+.wall-col.right .wall-frame:nth-child(2) {
+  margin-right: 12px;
+}
+
+.wall-col.right .wall-frame:nth-child(3) {
+  margin-right: 4px;
+}
+
+#home-char {
+  z-index: 3;
+}
+
+.wall-grid {
+  z-index: 4;
+  position: relative;
+  padding: 0px 30px 60px;
+  margin-top: -40px;
+}
+
+
+/* PAKU DI ATAS */
+.frame-nail {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 35% 35%, #d4d4d4, #888);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+}
+
+/* TALI / BENANG BINGKAI */
+.frame-inner::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 30%;
+  width: 40%;
+  height: 18px;
+  border-top: none;
+  border-left: 1.5px solid rgba(100,70,40,0.45);
+  border-right: 1.5px solid rgba(100,70,40,0.45);
+  border-bottom: none;
+  border-radius: 0 0 0 0;
+  clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+}
+
+/* LABEL BAWAH */
+.frame-label {
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #5a4a44;
+  margin-top: 6px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* BAYANGAN BAWAH BINGKAI */
+.frame-shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 8%;
+  width: 84%;
+  height: 12px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.18) 0%, transparent 80%);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+#wireframe {
+  width: calc(100% + 205px);   /* balikin ruang yg diambil sidebar */
+  margin-right: -205px;        /* dorong ke kanan */
+  padding-left: 48px;          /* tetap rapi */
+  padding-right: 48px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- LEFT SIDEBAR -->
+<aside class="sidebar-left">
+  <div class="profile-mini">
+    <div class="avatar-wrap">
+      <img src="foto.jpeg">
+    </div>
+    <div class="sidebar-name">Khalisha<br><small style="font-size:0.72rem;font-weight:400;font-family:'DM Sans',sans-serif;color:var(--text-light)"></div>
+    <div class="sidebar-role">Sistem Informasi · UIB</div>
+  </div>
+  <div class="divider"></div>
+  <div>
+    <div class="nav-label">Menu Utama</div>
+    <nav class="nav-links" id="mainNav">
+      <a href="#home"><span class="dot"></span><i class="fas fa-home"></i> Home</a>
+      <a href="#about"><span class="dot"></span><i class="fas fa-user"></i> About Me</a>
+      <a href="#project"><span class="dot"></span><i class="fas fa-folder-open"></i> Project</a>
+      <a href="#experience"><span class="dot"></span><i class="fas fa-graduation-cap"></i> Experience</a>
+      <a href="#hobbies"><span class="dot"></span><i class="fas fa-heart"></i> Hobbies</a>
+      <a href="#anime"><span class="dot"></span><i class="fas fa-star"></i> Fav. movies</a>
+      <a href="#wireframe"><span class="dot"></span><i class="fas fa-pencil-ruler"></i> Wireframe</a>
+      <a href="#contact"><span class="dot"></span><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main" id="mainScroll">
+
+<!-- HOME -->
+<section id="home" style="padding:0;overflow:hidden;position:relative;min-height:100vh;">
+
+  <!-- LAYER 1: BACKGROUND FOTO -->
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="background.png" alt="" style="
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    ">
+  </div>
+
+  <!-- LAYER 2: KARAKTER -->
+  <div id="home-char" style="
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    pointer-events:none;
+    height:90%;
+    display:flex;
+    align-items:flex-end;
+  ">
+    <img src="karakter.png" alt="Khalisha" style="
+      height:100%;
+      max-height:560px;
+      object-fit:contain;
+      mix-blend-mode:multiply;
+      filter:drop-shadow(0 8px 24px rgba(139,90,60,0.25));
+    ">
+  </div>
+
+  <!-- LAYER 3: FOTO EFEK FULL SCREEN ORIGINAL -->
+  <div style="position:absolute;inset:0;z-index:3;pointer-events:none;">
+    <img src="efek.png" alt="" style="
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+    ">
+  </div>
+
+  <!-- LAYER 4: JUDUL + PROP DINDING -->
+  <div style="position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;">
+
+    <!-- JUDUL BESAR AESTHETIC -->
+    <div class="home-title-wrap">
+      <div class="home-title-tag">✦ Welcome to my space ✦</div>
+      <h1 class="home-big-title">My Portfolio</h1>
+      <div class="home-title-sub">Khalisha Zahrotus Sita &nbsp;·&nbsp; Sistem Informasi UIB</div>
+    </div>
+
+    <!-- PROP BINGKAI DINDING -->
+<div class="wall-grid">
+
+  <!-- KOLOM KIRI (4 bingkai) -->
+  <div class="wall-col left">
+
+    <div class="wall-frame" style="--rot:-4deg;--delay:0s;" onclick="location.href='#about'">
+      <div class="frame-inner">
+        <img src="prop-about.jpeg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">🪞 About Me</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+    <div class="wall-frame" style="--rot:3deg;--delay:0.15s;" onclick="location.href='#project'">
+      <div class="frame-inner">
+        <img src="prop-project.png" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">💻 Projects</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+    <div class="wall-frame" style="--rot:-2deg;--delay:0.3s;" onclick="location.href='#experience'">
+      <div class="frame-inner">
+        <img src="prop-exp.jpeg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">🎓 Experience</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+    <div class="wall-frame" style="--rot:4deg;--delay:0.45s;" onclick="location.href='#hobbies'">
+      <div class="frame-inner">
+        <img src="digital-art.jpeg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">🎨 Hobbies</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+  </div>
+
+  <!-- TENGAH: KOSONG buat karakter -->
+  <div style="flex:1;"></div>
+
+  <!-- KOLOM KANAN (3 bingkai) -->
+  <div class="wall-col right">
+
+    <div class="wall-frame" style="--rot:3deg;--delay:0.1s;" onclick="location.href='#favorite'">
+      <div class="frame-inner">
+        <img src="tangled.jpeg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">🎬 Fav Movies</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+    <div class="wall-frame" style="--rot:-3deg;--delay:0.25s;" onclick="location.href='#wireframe'">
+      <div class="frame-inner">
+        <img src="figma.jpg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">🧩 Wireframe</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+    <div class="wall-frame" style="--rot:2deg;--delay:0.4s;" onclick="location.href='#contact'">
+      <div class="frame-inner">
+        <img src="prop-about.jpeg" alt="">
+        <div class="frame-nail"></div>
+        <div class="frame-label">✉️ Contact</div>
+      </div>
+      <div class="frame-shadow"></div>
+    </div>
+
+  </div>
+
+</div>
+  <!-- NAMA TAG BAWAH -->
+  <div style="
+    position:absolute;
+    bottom:20px;left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    text-align:center;
+    pointer-events:none;
+  ">
+    <div style="
+      background:rgba(255,248,240,0.82);
+      backdrop-filter:blur(12px);
+      border-radius:30px;
+      padding:7px 24px;
+      border:1.5px solid rgba(196,154,138,0.45);
+      display:inline-block;
+      box-shadow:0 4px 20px rgba(139,90,60,0.12);
+    ">
+      <span style="font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:#3a2e2a;">
+        Khalisha Zahrotus Sita
+      </span>
+      <span style="font-size:0.7rem;color:#9a7ec4;margin-left:8px;">
+        Sistem Informasi · UIB
+      </span>
+    </div>
+  </div>
+
+</section>
+
+  <!-- ABOUT -->
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-tag">✦ About Me</div>
+  <h2 class="sec-title">HELLO! 🌸</h2>
+
+  <!-- ATAS: FOTO + DESKRIPSI -->
+<div class="about-layout">
+
+  <!-- CARD FOTO + DESKRIPSI -->
+  <div class="about-card">
+   <div class="about-img fade-up">
+      <img src="foto-kamu.jpeg" alt="Khalisha">
+    </div>
+
+    <div class="about-text">
+      <p>
+        Hi! I’m <strong>Khalisha</strong>, 18 years old, a second-semester Information Systems student at Universitas Internasional Batam.
+        I’m passionate about art, technology, and design.
+      </p>
+
+      <p>
+        Have you ever heard of a first love? If you asked me about mine, I would say: <strong>swimming and drawing</strong>.
+      </p>
+
+      <p>
+        Now, they’ve become hobbies I do in my free time… although lately I’ve been quite busy and rarely have time for them, haha.
+      </p>
+
+      <p class="quote">
+        “Not everything we want will always come true. But I believe that whatever God has planned is always the best.”
+      </p>
+    </div>
+  </div>
+
+  <!-- BIODATA (FULL WIDTH) -->
+  <div class="about-bio">
+    <div class="bio-card">
+      <table class="bio-table">
+        <tr><td>Nama</td><td>Khalisha Zahrotus Sita</td></tr>
+        <tr><td>Tanggal Lahir</td><td>7 Oktober 2007</td></tr>
+        <tr><td>Jenis Kelamin</td><td>Perempuan</td></tr>
+        <tr><td>Agama</td><td>Islam</td></tr>
+        <tr><td>Pekerjaan</td><td>Mahasiswa</td></tr>
+        <tr><td>MBTI</td><td><span class="mbti-badge">ISTJ</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="project">
+  <div class="sec-tag">✦ Project</div>
+  <h2 class="sec-title">My Projects 💻</h2>
+  <p class="sec-sub">Beberapa karya yang pernah aku buat</p>
+
+  <div class="project-grid">
+
+    <!-- ROW 1 -->
+    <div class="project-card">
+      <img src="game.png">
+      <div class="project-overlay">
+        <h3>🎮 Game Project</h3>
+        <p>Team project for programming engineering EXPO.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="figma.jpg">
+      <div class="project-overlay">
+        <h3>📱 Mobile Prototype</h3>
+        <p>UI/UX design of mobile application using Figma.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="poster.jpg">
+      <div class="project-overlay">
+        <h3>🖼️ Poster Design</h3>
+        <p>Multimedia project assignment, campus activity poster design.</p>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="project-card">
+      <img src="art1.jpeg">
+      <div class="project-overlay">
+        <h3>🎨 Digital Art 1</h3>
+        <p>Idigital illustration using references.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="art2.jpeg">
+      <div class="project-overlay">
+        <h3>🎨 Digital Art 2</h3>
+        <p>Character design exploration.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="art3.jpeg">
+      <div class="project-overlay">
+        <h3>🎨 Digital Art 3</h3>
+        <p>digital art that uses a background taken with a cell phone camera.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-tag">✦ Experience</div>
+    <h2 class="sec-title">Experience</h2>
+    <p class="sec-sub">Pendidikan dan pencapaianku selama ini</p>
+    <div class="exp-grid">
+      <div>
+        <div class="ecol-title"><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</div>
+        <div class="timeline">
+          <div class="tl"><div class="tl-dot s"></div><div class="tl-yr">2025 - Sekarang</div><div class="tl-t">S1 Sistem Informasi</div><div class="tl-s">Universitas Internasional Batam (UIB)<br>Batam, Kepulauan Riau</div></div>
+          <div class="tl"><div class="tl-dot s"></div><div class="tl-yr">2022 - 2025</div><div class="tl-t">SMA — Jurusan IPA</div><div class="tl-s">SMA Negeri 3Karimun<br><span class="tl-b">🏆 Sekretaris OSIS · 2 Periode</span></div></div>
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2019 -2022</div><div class="tl-t">SMP</div><div class="tl-s">SMP Negeri 1 Meral</div></div>
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2013 - 2019</div><div class="tl-t">SD</div><div class="tl-s">SD Negeri 009 Meral</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="ecol-title"><i class="fas fa-trophy"></i> Pengalaman & Prestasi</div>
+         <div class="ach">
+          <div class="ach-ic">🏛️</div>
+          <div class="ach-t"><strong>Staff inti Forum OSIS Karimun</strong><br>Koordinasi antar Staff Inti dari SMA lain dan Ikut berperan aktif dalam event hari pahlawan.</div>
+        </div>
+        <div class="ach">
+          <div class="ach-ic">🏛️</div>
+          <div class="ach-t"><strong>Sekretaris OSIS — SMA</strong><br>Bertanggung jawab atas administrasi, dokumentasi, dan koordinasi antar divisi OSIS selama 2 periode di masa SMA.</div>
+        </div>
+         <div class="ach">
+          <div class="ach-ic">⚛️</div>
+          <div class="ach-t"><strong>Bendahara Sains Club — SMA</strong><br>Bertanggung jawab atas pengelolaan dana dan pencatatan keuangan.</div>
+           </div>
+        <div class="ach">
+          <div class="ach-ic">⚛️</div>
+          <div class="ach-t"><strong>OSN Fisika — SMA</strong><br>Mengikuti Olimpiade Sains Nasional cabang <strong>Fisika</strong> selama 2 tahun berturut-turut.</div>
+           </div>
+        <div class="ach">
+          <div class="ach-ic">⚛️</div>
+          <div class="ach-t"><strong>OSN IPA — SD</strong><br>Mengikuti Olimpiade Sains Nasional cabang <strong>IPA</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOBBIES -->
+  <section id="hobbies">
+    <div class="sec-tag">✦ Hobbies</div>
+    <h2 class="sec-title">Hal yang Aku Sukai 💕</h2>
+    <p class="sec-sub">Aktivitas yang bikin aku happy</p>
+<div class="hgrid">
+
+  <!-- SWIMMING -->
+  <div class="hcard">
+    <img src="swimming.jpeg" class="h-img">
+    <div class="hcontent">
+      <div class="h-name">🏊‍♀️ Swimming</div>
+      <p class="h-desc">Cinta pertamaku sejak kecil. Air selalu jadi tempat ternyaman untuk melepas penat.</p>
+    </div>
+  </div>
+
+  <!-- DIGITAL ART -->
+  <div class="hcard">
+    <img src="digital-art.jpeg" class="h-img">
+    <div class="hcontent">
+      <div class="h-name">🎨 Digital Art</div>
+      <p class="h-desc">Menggambar digital jadi cara terbaikku mengekspresikan ide dan imajinasi.</p>
+    </div>
+  </div>
+
+  <!-- PAINTING -->
+  <div class="hcard">
+    <img src="painting.jpeg" class="h-img">
+    <div class="hcontent">
+      <div class="h-name">🖌️ Painting</div>
+      <p class="h-desc">Melukis dengan warna nyata memberi rasa tenang dan kepuasan tersendiri.</p>
+    </div>
+  </div>
+
+  <!-- CROCHET -->
+  <div class="hcard">
+    <img src="crochet.jpeg" class="h-img">
+    <div class="hcontent">
+      <div class="h-name">🧶 Crochet</div>
+      <p class="h-desc">Merajut perlahan tapi pasti — prosesnya bikin sabar dan hasilnya lucu!</p>
+    </div>
+  </div>
+
+  <!-- RUBIK -->
+<div class="hcard">
+    <img src="rubik.jpeg" class="h-img">
+    <div class="hcontent">
+      <div class="h-name">🧩 Rubik Cube</div>
+      <p class="h-desc">Suka tantangan! Main rubik bikin otak tetap aktif dan fokus.</p>
+    </div>
+  </div>
+  </div> <!-- penutup .hgrid -->
+  </section>
+
+  <!-- ANIME -->
+  <section id="favorite">
+  <div class="sec-tag">✦ My Favorite</div>
+  <h2 class="sec-title">Favorite Movies 🎬</h2>
+  <p class="sec-sub">Film favoritku yang selalu aku ulang 💕</p>
+
+  <div class="fav-grid">
+    
+<!-- ROW 1 -->
+<div class="fav-card">
+  <img src="tangled.jpeg">
+  <div class="fav-title">Tangled</div>
+</div>
+
+<div class="fav-card">
+  <img src="toy-story.jpeg">
+  <div class="fav-title">Toy Story</div>
+</div>
+
+<div class="fav-card">
+  <img src="mlp.jpeg">
+  <div class="fav-title">My Little Pony</div>
+</div>
+
+<!-- ROW 2 -->
+<div class="fav-card">
+  <img src="northern.jpeg">
+  <div class="fav-title">Northern Limit Line</div>
+</div>
+
+<div class="fav-card">
+  <img src="study-group.jpeg">
+  <div class="fav-title">Study Group</div>
+</div>
+
+<div class="fav-card">
+  <img src="avengers.jpeg">
+  <div class="fav-title">Avengers</div>
+</div>
+  </div>
+</section>
+
+  <!-- WIREFRAME -->
+<section id="wireframe">
+  <div class="sec-tag">✦ Wireframe</div>
+  <h2 class="sec-title">My Wireframe Design 🧩</h2>
+  <p class="sec-sub">Beberapa rancangan desain sebelum menjadi website</p>
+
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-thumb poster">🧠</div>
+      <div class="proj-body">
+        <div class="proj-title">Wireframe</div>
+        <div class="proj-desc">Rancangan awal tampilan website biodata ini yang saya buat.</div>
+        <div class="proj-tags">
+          <span class="ptag">Figma</span>
+          <span class="ptag">UI Design</span>
+        </div>
+        <div class="proj-cta">
+          <a href="wireframe.pdf" target="_blank" class="pb pr">
+  <i class="fas fa-eye"></i> Preview
+</a>
+          <a href="#" class="pb"><i class="fas fa-download"></i> File</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="sec-tag">✦ Contact</div>
+    <h2 class="sec-title">Hubungi Aku 💌</h2>
+    <p class="sec-sub">Yuk ngobrol! Aku senang berkenalan dengan orang baru</p>
+    <div class="cgrid">
+      <div class="clinks">
+        <a href="mailto:emailkamu@gmail.com" class="clink">
+          <div class="cicon em"><i class="fas fa-envelope"></i></div>
+          <div><div class="clabel">Email</div><div class="cval">isyakhalis1007@gmail.com</div></div>
+          <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-light);font-size:0.72rem"></i>
+        </a>
+        <a href="https://instagram.com/khalishazhroo" target="_blank" class="clink">
+          <div class="cicon ig"><i class="fab fa-instagram"></i></div>
+          <div><div class="clabel">Instagram</div><div class="cval">@khalishazhroo</div></div>
+          <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-light);font-size:0.72rem"></i>
+        </a>
+        <a href="https://github.com/iamshaa07" target="_blank" class="clink">
+          <div class="cicon gh"><i class="fab fa-github"></i></div>
+          <div><div class="clabel">GitHub</div><div class="cval">github.com/iamshaa07</div></div>
+          <i class="fas fa-arrow-right" style="margin-left:auto;color:var(--text-light);font-size:0.72rem"></i>
+        </a>
+      </div>
+      <div class="mbox">
+        <div class="mhdr"><i class="fas fa-map-marker-alt" style="color:var(--accent1)"></i> Batam, Kepulauan Riau</div>
+<div class="membed">
+  <iframe 
+    src="https://www.google.com/maps?q=Universitas+Internasional+Batam&output=embed"
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy">
+  </iframe>
+</div>
+
+<div class="map-info">
+  <i class="fas fa-map-marked-alt"></i>
+  <strong>Batam, Kepulauan Riau</strong>
+  <span>Universitas Internasional Batam</span>
+  <a href="https://maps.google.com/?q=Universitas+Internasional+Batam" target="_blank" class="map-btn">
+    <i class="fas fa-external-link-alt"></i> Buka di Google Maps
+  </a>
+</div>
+      </div> <!-- penutup .mbox -->
+    </div> <!-- penutup .cgrid -->
+  </section>
+
+  <footer>Dibuat dengan <span>♥</span> oleh <span>Khalisha</span> · Mahasiswi Sistem Informasi UIB · 2026</footer>
+</main>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="sidebar-right">
+  <div class="side-r-label">✦ Fun Facts</div>
+  <div class="funfact-card" id="ffCard">
+    <div class="ff-icon" id="ffIcon">✨</div>
+    <div class="ff-text" id="ffText">I am 18 years old and I dont have a boyfriend or ex.</div>
+    <div class="ff-nav" id="ffNav"></div>
+  </div>
+  <div class="divider"></div>
+  <div class="side-r-label">✦ Quote Hari Ini</div>
+  <div class="quote-box">
+    <button class="q-refresh" onclick="nextQuote()" title="Quote baru">↻</button>
+    <p class="q-text" id="qText">Code is like humor. When you have to explain it, it is bad.</p>
+    <p class="q-author" id="qAuthor">— Cory House</p>
+  </div>
+  <div class="divider"></div>
+  <div class="side-r-label">✦ Mood Today</div>
+  <div class="mood-box">
+    <div class="mood-emoji" id="moodEmoji">😊</div>
+    <div class="mood-txt" id="moodTxt">Semangat belajar!</div>
+    <div class="mood-btns">
+      <button onclick="setMood('😊','Semangat belajar!')">😊</button>
+      <button onclick="setMood('😴','Ngantuk...')">😴</button>
+      <button onclick="setMood('🎨','Mood art!')">🎨</button>
+      <button onclick="setMood('🏊','Mau renang!')">🏊</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+// FUN FACTS
+const facts=[
+  {i:'✨',t:'I am 18 years old and I dont have a boyfriend or ex. '},
+  {i:'🏊‍♀️',t:'Renang adalah cinta pertamaku! Aku bisa berenang lebih lama dari belajar coding. 😄'},
+  {i:'🎨',t:'Aku bisa menghabiskan berjam-jam menggambar digital tanpa sadar waktu berlalu. ✨'},
+  {i:'🏆',t:'Pernah menjadi Sekretaris OSIS 2 periode — organisasi adalah passion-ku!'},
+  {i:'⚛️',t:'Pernah ikut OSN Fisika 2 tahun berturut-turut. Fisika itu seru! 🔬'},
+  {i:'💻',t:'Mahasiswi SI sekaligus digital artist — tech + art = combo sempurna! 🚀'},
+];
+let fi=0;
+function renderFact(i){
+  fi=i;
+  document.getElementById('ffIcon').textContent=facts[i].i;
+  document.getElementById('ffText').textContent=facts[i].t;
+  document.getElementById('ffNav').innerHTML=facts.map((_,x)=>
+    `<div class="ff-dot${x===i?' active':''}" onclick="renderFact(${x})"></div>`).join('');
+}
+renderFact(0);
+setInterval(()=>renderFact((fi+1)%facts.length),5000);
+
+// QUOTES
+const quotes=[
+  {t:'Code is like humor. When you have to explain it, it\'s bad.',a:'Cory House'},
+  {t:'The best way to predict the future is to create it.',a:'Peter Drucker'},
+  {t:'In the middle of every difficulty lies opportunity.',a:'Albert Einstein'},
+  {t:'The only way to do great work is to love what you do.',a:'Steve Jobs'},
+  {t:'Life is like swimming — just keep moving forward.',a:'Anonymous'},
+  {t:'Art enables us to find ourselves and lose ourselves at the same time.',a:'Thomas Merton'},
+  {t:'Dream big. Start small. Act now.',a:'Robin Sharma'},
+];
+let qi=0;
+const qEl=document.getElementById('qText');
+qEl.style.transition='opacity 0.25s';
+function nextQuote(){
+  qi=(qi+1)%quotes.length;
+  qEl.style.opacity='0';
+  setTimeout(()=>{
+    qEl.textContent=quotes[qi].t;
+    document.getElementById('qAuthor').textContent='— '+quotes[qi].a;
+    qEl.style.opacity='1';
+  },220);
+}
+
+// MOOD
+function setMood(e,t){
+  document.getElementById('moodEmoji').textContent=e;
+  document.getElementById('moodTxt').textContent=t;
+}
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("#mainNav a");
+const main = document.getElementById("mainScroll");
+
+main.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+
+    if (main.scrollTop >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+const faders = document.querySelectorAll('.fade-up');
+
+const appearOnScroll = new IntersectionObserver(function(entries){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+faders.forEach(el => appearOnScroll.observe(el));
+
+function playMusic() {
+  const player = document.getElementById("ytPlayer");
+
+  player.src = "https://youtu.be/n7ePZLn9_lQ?si=mtZHWjZ3o7RBOQox";
+}
+
+// KARAKTER IKUT MOUSE - LANGSUNG & SELEBAR BERANDA
+const homeSection = document.getElementById('home');
+const homeChar = document.getElementById('home-char');
+
+if (homeSection && homeChar) {
+  // Hapus transition biar gerak instan ngikutin mouse
+  homeChar.style.transition = 'none';
+
+  homeSection.addEventListener('mousemove', (e) => {
+    const rect = homeSection.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left; // posisi mouse dari kiri section
+
+    // Lebar karakter sekitar 120px, biar ga keluar layar kasih padding 60px
+    const charWidth = 120;
+    const padding = 60;
+    const minX = padding;
+    const maxX = rect.width - padding;
+
+    // Batasi posisi dalam range beranda
+    const clampedX = Math.max(minX, Math.min(maxX, mouseX));
+
+    // Hitung offset dari tengah
+    const centerX = rect.width / 2;
+    const moveX = clampedX - centerX;
+
+    // Flip karakter sesuai arah gerak
+    const flip = moveX > 5 ? 1 : moveX < -5 ? -1 : 1;
+
+    homeChar.style.transform = `translateX(calc(-50% + ${moveX}px)) scaleX(${flip})`;
+  });
+
+  homeSection.addEventListener('mouseleave', () => {
+    // Balik ke tengah dengan smooth saat mouse keluar
+    homeChar.style.transition = 'transform 0.4s ease';
+    homeChar.style.transform = 'translateX(-50%) scaleX(1)';
+    setTimeout(() => {
+      homeChar.style.transition = 'none';
+    }, 400);
+  });
+}
+
+</script>
+</body>
+</html>
